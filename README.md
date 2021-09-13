@@ -1,13 +1,10 @@
 # blog-application
 ## Description:
 A simple blog app where anybody can write down anything helpful so everyone can view. Fully implemented and user experience improved by security authentication and authorization.<br />
-Built in [cloud9](https://c9.io) - a powerful online code editor with a full Ubuntu workspace in the cloud.
 
 ### Setup MongoDB
-* If built with [cloud 9](https://community.c9.io/t/setting-up-mongodb/1717) 
-* If built locally and run with real mongoDB, you need to have (https://mlab.com) account and name your database blog (for example) as well as dbuser and dbpassword: 
-```
-mongoose.connect("mongodb://dbuser:dbpassword@ds000000.mlab.com:00000/blog", {useMongoClient: true});
+
+mongoose.connect("mongodb+srv://dbuser:dbpassword@cluster0.0heuv.mongodb.net/blog-site");
 ```
 ### NPM Install
 ```
@@ -16,7 +13,6 @@ node app.js
 ```
 - express (Server-side Javascript)
 - ejs (Embedded Javascript)
-- express-sanitizer (middleware after initilize `body-parser` for node-validation) 
 - body-parser 
 - mongoose (mongoDB for Express version)
 - method-override (used for method PUT and DELETE in RESTful ROUTE that form type in cliend-side doesn't support
@@ -26,21 +22,6 @@ node app.js
 - passport-local-mongoose
 - express-session
 
-<!-- 
-## Simple guideline from scratch
- 1. The differences between Authentication and Authorization:
- - Authentication: get people signup/login. In other words, people need to tell app/website who they are.
- - Authorization: Once figure out who user is, grant permission on specific things they are allowed to do.
- 2. How To Do?
- - Hint: 
-   + Verify the id of current user with id of author who creates the post
-   + However, id of current user - a string (req.user._id) is different than id of author (foundBlog.author.id) - a mongoose object
-   + Instead of using: if(req.user._id === foundBlog.author.id). We use:
-   ```
-   if(foundBlog.author.id.equals(req.user._id)){
-                  ...
-          }
-   ```
 ### Blog Index
 * Setup the Blog App
 * Create the Blog model
@@ -69,9 +50,6 @@ node app.js
 ### DESTROY
 * Add Method-Override
 * Add EDIT and DESTROY links
-### Optional updated
-* Sanitize blog body
-* Style Index
 ### Create comments
 * Update/Edit route + form
 * Destroy route
